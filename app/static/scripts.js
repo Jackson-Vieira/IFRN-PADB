@@ -48,12 +48,27 @@ $(document).ready(function(){
 	});
 
 	$('#addRoomForm').on('submit', function(event){
+		event.preventDefault();
 		var formData = {
       		name: $("#addRoomName").val(),
       		description: $("addRoomDescription").val(),
       		enabled: $("#addRoomEnabled").val(),
-			start_date: $("#addEnabled").val(),
-			end_date: $("#addRoomEnabled").val(),
+			start_date: new Date($("#addRoomStartDate").val()),
+			end_date: new Date($("#addRoomEndDate").val()),
     	};
+
+		console.log(formData);
+
+		$.ajax({
+		    type: "POST",
+      		url: "http://localhost:5000/api/v1/rooms",
+      		data: formData,
+      		dataType: "json",
+      		encode: true,
+    	}).done(function (data) {
+      		console.log(data);
+    	});
+
+		console.log(formData)
 	});
 });
