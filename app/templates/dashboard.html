@@ -33,24 +33,26 @@
         		</tr>
     		</thead>
     		<tbody>
-        		<tr>
-            		<td>
-                		<span class="custom-checkbox">
-                    		<input type="checkbox" id="checkbox1" name="options[]" value="1">
-                    		<label for="checkbox1"></label>
-                		</span>
-            		</td>
-            		<td>1</td>
-            		<td>Conference Room 1</td>
-            		<td>Description 1</td>
-            		<td>true</td>
-            		<td>2023-01-01 10:00:00</td>
-            		<td>2023-01-01 12:00:00</td>
-            		<td>
-                		<a data-bs-target="#editRoomModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                		<a data-bs-target="#deleteRoomModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a>
-            		</td>
-        		</tr>
+				{% for room in rooms %}
+        			<tr>
+            			<td>
+                			<span class="custom-checkbox">
+                    			<input type="checkbox" id="checkbox1" name="options[]" value="1">
+                    			<label for="checkbox1"></label>
+                			</span>
+            			</td>
+            			<td>{{room[0]}}</td>
+            			<td>{{room[1]}}</td>
+            			<td>{{room[2]}}</td>
+            			<td>{{room[3]}}</td>
+            			<td>{{room[4]}}</td>
+            			<td>{{room[5]}}</td>
+            			<td>
+                			<a data-bs-target="#editRoomModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                			<a data-bs-target="#deleteRoomModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            			</td>
+        			</tr>
+				{% endfor %}
     		</tbody>
 		</table>	
 			<!-- <div class="clearfix">

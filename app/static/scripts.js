@@ -15,6 +15,7 @@ $(document).ready(function(){
 			});
 		} 
 	});
+
 	checkbox.click(function(){
 		if(!this.checked){
 			$("#selectAll").prop("checked", false);
@@ -47,6 +48,12 @@ $(document).ready(function(){
 	});
 
 	$('#addRoomForm').on('submit', function(event){
-		event.preventDefault();
+		var formData = {
+      		name: $("#addRoomName").val(),
+      		description: $("addRoomDescription").val(),
+      		enabled: $("#addRoomEnabled").val(),
+			start_date: $("#addEnabled").val(),
+			end_date: $("#addRoomEnabled").val(),
+    	};
 	});
 });

@@ -24,7 +24,7 @@ INSERT_ROOM_SQL = """
 """
 
 GET_ROOMS_SQL = """
-  SELECT * FROM Rooms
+  SELECT id, name, description, enable, start_date, end_date, created_at, updated_at FROM Rooms
 """
 
 GET_ROOM_SQL = """
@@ -59,17 +59,18 @@ class Room(RoomBase):
 def create_room():
   try:
     room = RoomCreate(**request.get_json())
+    room_dict = room.model_dump()
 
     with connect_db() as conn:
       with conn.cursor() as cur:
-        cur.execute(INSERT_ROOM_SQL, **room.model_dump())
+        cur.execute(INSERT_ROOM_SQL, room_dict)
 
-    return room.model_dump(), 202
+    return room_dict, 202
 
   except ValidationError as e:
     return e.errors(), 400
   except Exception as e:
-    return e, 500
+    return "Internal Server Error", 500
     
 @app.route("/api/v1/rooms/<room_id>", methods=["DELETE"])
 def remover_room(room_id):
@@ -103,7 +104,14 @@ def update_room(room_id):
 
 @app.route("/", methods=["GET"])
 def dashboard_view():
-  return flask.render_template("dashboard.html")
+
+  rooms = []
+  with connect_db() as conn:
+    with conn.cursor() as cur:
+      cur.execute(GET_ROOMS_SQL)
+      rooms = cur.fetchall()
+
+  return flask.render_template("dashboard.html", rooms=rooms)
 
 if __name__ == "__main__":
   # test_db_connection()
