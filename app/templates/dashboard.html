@@ -72,7 +72,7 @@
 <div id="addRoomModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form id="addRoomForm">
 			    <div class="modal-header">                        
         			<h4 class="modal-title">Create Room</h4>
         			<button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
@@ -80,31 +80,31 @@
     			<div class="modal-body">                    
         			<div class="form-group">
             			<label>Name</label>
-            			<input type="text" class="form-control" id="editRoomName" required>
+            			<input type="text" class="form-control" id="addRoomName" required>
         			</div>
         			<div class="form-group">
             			<label>Description</label>
-            			<textarea class="form-control" id="editRoomDescription" required></textarea>
+            			<textarea class="form-control" id="addRoomDescription" required></textarea>
         			</div>
         			<div class="form-group">
             			<label>Enabled</label>
-            			<select class="form-control" id="editRoomEnabled" required>
+            			<select class="form-control" id="addRoomEnabled" required>
                 			<option value="true">True</option>
                 			<option value="false">False</option>
             			</select>
         			</div>
         			<div class="form-group">
             			<label>Start Date</label>
-            			<input type="datetime-local" class="form-control" id="editRoomStartDate" required>
+            			<input type="datetime-local" class="form-control" id="addRoomStartDate" required>
         			</div>
         			<div class="form-group">
             			<label>End Date</label>
-            			<input type="datetime-local" class="form-control" id="editRoomEndDate" required>
+            			<input type="datetime-local" class="form-control" id="addRoomEndDate" required>
         			</div>                  
     			</div>
     			<div class="modal-footer">
-        			<input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-        			<input type="submit" class="btn btn-info" value="Save">
+        			<input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel" id="addRoomCancel">
+        			<input type="submit" class="btn btn-info" value="Save" id="addRoomSubmit">
     			</div>
 			</form>		
 		</div>
@@ -114,7 +114,7 @@
 <div id="editRoomModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form id="editRoomForm">
 			    <div class="modal-header">                        
         			<h4 class="modal-title">Edit Room</h4>
         			<button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
@@ -145,8 +145,8 @@
         			</div>                  
     			</div>
     			<div class="modal-footer">
-        			<input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-        			<input type="submit" class="btn btn-info" value="Save">
+        			<input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel" id="editRoomCancel">
+        			<input type="submit" class="btn btn-info" value="Save" id="editRoomSubmit">
     			</div>
 			</form>	
 		</div>
@@ -166,8 +166,8 @@
 					<p class="text-warning"><small>This action cannot be undone.</small></p>
 				</div>
 				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
+					<input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel" id="deleteRoomCancel">
+					<input type="submit" class="btn btn-danger" value="Delete" id="deleteRoomSubmit">
 				</div>
 			</form>
 		</div>

@@ -1,10 +1,4 @@
-config = {
-  "dbname": "postgres",
-  "user": "postgres",
-  "password": "",
-  "host": "localhost",
-  "port": 5432
-}
+# imports database here
 
 ROOM_TABLE = """
     CREATE TABLE IF NOT EXISTS ROOMS (
@@ -27,3 +21,6 @@ MESSAGE_TABLE = """
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     )
 """
+
+
+# create connection and cursor here
