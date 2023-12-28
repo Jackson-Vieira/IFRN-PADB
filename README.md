@@ -17,5 +17,5 @@ curl -X POST -H "Content-Type: application/json" -d '{
   "end_date": "2023-12-31",
   "created_at": "2023-12-28T12:00:00Z",
   "updated_at": "2023-12-28T12:00:00Z"
-}' http://localhost:5000/room/create
+}' http://localhost:5000/api/v1/rooms
 ```
