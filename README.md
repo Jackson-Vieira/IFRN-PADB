@@ -14,8 +14,6 @@ curl -X POST -H "Content-Type: application/json" -d '{
   "description": "Your Room Description",
   "enable": true,
   "start_date": "2023-01-01",
-  "end_date": "2023-12-31",
-  "created_at": "2023-12-28T12:00:00Z",
-  "updated_at": "2023-12-28T12:00:00Z"
+  "end_date": "2023-12-31"
 }' http://localhost:5000/api/v1/rooms
 ```

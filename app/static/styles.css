@@ -74,7 +74,6 @@ body {
 }
 .table-title .btn span {
 	float: left;
-	margin-top: 2px;
 }
 
 table.table tr th, table.table tr td {
@@ -116,6 +115,11 @@ table.table td:last-child i {
 	font-size: 22px;
 	margin: 0 5px;
 }
+
+table.table td:last-child {
+	text-align: center;
+}
+
 table.table td a {
 	font-weight: bold;
 	color: #566787;
@@ -125,6 +129,7 @@ table.table td a {
 }
 table.table td a:hover {
 	color: #2196F3;
+	cursor: pointer;
 }
 table.table td a.edit {
 	color: #FFC107;
@@ -132,14 +137,32 @@ table.table td a.edit {
 table.table td a.delete {
 	color: #F44336;
 }
+
+table.table td a svg {
+	width: 16px;
+	height: 16px;
+}
+
 table.table td i {
 	font-size: 19px;
 }
+
+table.table td.active {
+	/* TODO CHANGE THIS */
+	color: green;
+}
+
+table.table td.disabled{
+	/* TODO CHANGE THIS FOR RED */
+	color: red;
+}
+
 table.table .avatar {
 	border-radius: 50%;
 	vertical-align: middle;
 	margin-right: 10px;
 }
+
 .pagination {
 	float: right;
 	margin: 0 0 5px;
@@ -236,13 +259,32 @@ table.table .avatar {
 	padding: 20px 30px;
 }
 .modal .modal-content {
-	border-radius: 3px;
+	border-radius: 4px;
 	font-size: 14px;
+	background: var(--color-surface-200);
+	color: #fff;
 }
 .modal .modal-footer {
-	background: #ecf0f1;
 	border-radius: 0 0 3px 3px;
 }
+
+.modal-footer .btn {
+	color: #fff;
+}
+
+.modal-footer .btn-cancel:hover {
+	opacity: 80%;
+}
+
+.modal-footer .btn-save {
+	background: var(--color-surface-mixed-400);
+}
+
+.modal-footer .btn-save:hover {
+	background: var(--color-surface-500);
+}
+
+
 .modal .modal-title {
 	display: inline-block;
 }
@@ -261,3 +303,14 @@ table.table .avatar {
 .modal form label {
 	font-weight: normal;
 }	
+
+.button_add_icon {
+	width: 16px;
+}
+
+.close {
+	font-size: 24px;
+	background: transparent;
+	border: none;
+	color: #fff;
+}

@@ -2,14 +2,18 @@ import flask
 import psycopg2
 
 from flask import request
+from flask_cors import CORS
 from pydantic import BaseModel, ValidationError
 from decouple import config
+
+import datetime
 
 from database import ROOM_TABLE, MESSAGE_TABLE
 
 DATABASE_URL = config("DATABASE_URL")
 
 app = flask.Flask(__name__)
+CORS(app, origins=["localhost"])
 
 def connect_db():
     return psycopg2.connect(DATABASE_URL)
@@ -19,8 +23,8 @@ def test_db_connection():
     ...
 
 INSERT_ROOM_SQL = """
-  INSERT INTO Rooms (name, description, enable, start_date, end_date, created_at, updated_at)
-  VALUES (%(name)s, %(description)s, %(enable)s, %(start_date)s, %(end_date)s, %(created_at)s, %(updated_at)s)
+  INSERT INTO Rooms (name, description, enable, start_date, end_date)
+  VALUES (%(name)s, %(description)s, %(enable)s, %(start_date)s, %(end_date)s)
 """
 
 GET_ROOMS_SQL = """
@@ -46,8 +50,6 @@ class RoomBase(BaseModel):
   enable: bool
   start_date: str
   end_date: str
-  created_at: str
-  updated_at: str
 
 class RoomCreate(RoomBase):
   ...
@@ -70,6 +72,7 @@ def create_room():
   except ValidationError as e:
     return e.errors(), 400
   except Exception as e:
+    print(e)
     return "Internal Server Error", 500
     
 @app.route("/api/v1/rooms/<room_id>", methods=["DELETE"])
@@ -81,25 +84,27 @@ def remover_room(room_id):
       cur.execute(DELETE_ROOM_SQL, {"id": room_id})
       conn.commit()
 
-  return f"Remover sala com ID {room_id}", 200
+  return "", 200
 
 @app.route("/api/v1/rooms/<room_id>", methods=["PUT"]) # CASO PRATICO: QUAL A DIFERENCA ENTRE PUT E PATCH?
 def update_room(room_id):
   try:
     room = RoomCreate(**request.get_json())
     room_dict = room.model_dump()
+    room_dict["updated_at"] = datetime.datetime.now()
 
     # TODO: check if room exists first
     with connect_db() as conn:
       with conn.cursor() as cur:
-        cur.execute(UPDATE_ROOM_SQL, {"id": room_id, **room_dict()})
+        cur.execute(UPDATE_ROOM_SQL, {"id": room_id, **room_dict})
         conn.commit()
 
-    return room_dict, 202
+    return "", 200
 
   except ValidationError as e:
     return e.errors(), 400
   except Exception as e:
+    print(e)
     return e, 500
 
 @app.route("/", methods=["GET"])
