@@ -49,8 +49,8 @@
             			<td>{{room[4]}}</td>
             			<td>{{room[5]}}</td>
             			<td>
-                			<a data-bs-target="#editRoomModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                			<a data-bs-target="#deleteRoomModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                			<a data-bs-target="#editRoomModal" class="edit" data-bs-toggle="modal">Edit</a>
+                			<a data-bs-target="#deleteRoomModal" class="delete" data-bs-toggle="modal">Delete</a>
             			</td>
         			</tr>
 				{% endfor %}
@@ -63,7 +63,7 @@
 <div id="addRoomModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form id="addRoomForm">
+			<form name="addRoomForm" action="" id="addRoomForm">
 			    <div class="modal-header">                        
         			<h4 class="modal-title">Create Room</h4>
         			<button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
@@ -71,26 +71,26 @@
     			<div class="modal-body">                    
         			<div class="form-group">
             			<label>Name</label>
-            			<input type="text" class="form-control" id="addRoomName" required>
+            			<input name="name" type="text" class="form-control" id="addRoomName" required>
         			</div>
         			<div class="form-group">
             			<label>Description</label>
-            			<textarea class="form-control" id="addRoomDescription" required></textarea>
+            			<textarea name="description" class="form-control" id="addRoomDescription" required></textarea>
         			</div>
         			<div class="form-group">
             			<label>Enabled</label>
-            			<select class="form-control" id="addRoomEnabled" required>
+            			<select name="enabled" class="form-control" id="addRoomEnabled" required>
                 			<option value="true">True</option>
                 			<option value="false">False</option>
             			</select>
         			</div>
         			<div class="form-group">
             			<label>Start Date</label>
-            			<input type="datetime-local" class="form-control" id="addRoomStartDate" required>
+            			<input name="start_date" type="datetime-local" class="form-control" id="addRoomStartDate" required>
         			</div>
         			<div class="form-group">
             			<label>End Date</label>
-            			<input type="datetime-local" class="form-control" id="addRoomEndDate" required>
+            			<input name="end_date" type="datetime-local" class="form-control" id="addRoomEndDate" required>
         			</div>                  
     			</div>
     			<div class="modal-footer">
@@ -105,34 +105,36 @@
 <div id="editRoomModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form id="editRoomForm">
+			<form name="editRoomForm" id="editRoomForm">
 			    <div class="modal-header">                        
         			<h4 class="modal-title">Edit Room</h4>
         			<button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
     			</div>
-    			<div class="modal-body">                    
+    			<div class="modal-body">    
+					<input id="editRoomId" type="hidden" name="id" value="">                
+
         			<div class="form-group">
             			<label>Name</label>
-            			<input type="text" class="form-control" id="editRoomName" required>
+            			<input name="name" type="text" class="form-control" id="editRoomName" required>
         			</div>
         			<div class="form-group">
             			<label>Description</label>
-            			<textarea class="form-control" id="editRoomDescription" required></textarea>
+            			<textarea name="description" class="form-control" id="editRoomDescription" required></textarea>
         			</div>
         			<div class="form-group">
             			<label>Enabled</label>
-            			<select class="form-control" id="editRoomEnabled" required>
+            			<select name="enabled" class="form-control" id="editRoomEnabled" required>
                 			<option value="true">True</option>
                 			<option value="false">False</option>
             			</select>
         			</div>
         			<div class="form-group">
             			<label>Start Date</label>
-            			<input type="datetime-local" class="form-control" id="editRoomStartDate" required>
+            			<input name="start_date" type="datetime-local" class="form-control" id="editRoomStartDate" required>
         			</div>
         			<div class="form-group">
             			<label>End Date</label>
-            			<input type="datetime-local" class="form-control" id="editRoomEndDate" required>
+            			<input name="end_date" type="datetime-local" class="form-control" id="editRoomEndDate" required>
         			</div>                  
     			</div>
     			<div class="modal-footer">
@@ -147,7 +149,9 @@
 <div id="deleteRoomModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form name="deleteRoomForm">
+				<input id="editRoomId" type="hidden" name="id" value="">                
+
 				<div class="modal-header">						
 					<h4 class="modal-title">Delete Room</h4>
 					<button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
