@@ -1,0 +1,9 @@
+TESTS (TDD)
+[ ] - Test Database connection
+[ ] - Test Schemas
+[ ] - Test Usecases
+    - [ ] ADD
+    - [ ] DELETE
+    - [ ] PUT
+    - [ ] GET
+    - [ ] SEARCH
