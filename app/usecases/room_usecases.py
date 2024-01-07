@@ -1,5 +1,6 @@
 # from pydantic import BaseModel
 from .base import BaseRepository
+import datetime
 
 class RoomRepository(BaseRepository):
     INSERT_ROOM_SQL = """
@@ -47,8 +48,8 @@ class RoomRepository(BaseRepository):
         cursor = self.execute_query(self.DELETE_ROOM_SQL, {"id": rid})
         self.db_connection.commit()
     
-    def update_room(self, data):
-        cursor = self.execute_query(self.UPDATE_ROOM_SQL, data)
+    def update(self, rid, data):
+        cursor = self.execute_query(self.UPDATE_ROOM_SQL, {"id": rid, "updated_at": datetime.datetime.now(), **data})
         self.db_connection.commit()
 
     def search(self, query):
@@ -70,7 +71,7 @@ class RoomUseCases:
         self.room_repository.delete_room(rid)
 
     def update_room(self, rid: int, data: dict):
-        self.update_room(rid, data)
+        self.room_repository.update(rid, data)
 
     def get_all_rooms(self) -> []:
         return self.room_repository.get_rooms()
