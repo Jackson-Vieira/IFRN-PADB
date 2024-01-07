@@ -1,6 +1,20 @@
 version: "3.8"
 
 services:
+
+  web:
+    container_name: web
+    build: .
+    expose:
+      - 8000
+    volumes:
+      - static_data:/home/app/static
+    depends_on:
+      - db
+    networks:
+      - appnet
+    command: ["gunicorn", "-w 4", "-b", "0.0.0.0:8000", "app.main:app"]
+
   db:
     container_name: db
     image: postgres:latest
@@ -19,4 +33,5 @@ networks:
   appnet:
     driver: bridge
 volumes:
-  pgdata: {}
+  pgdata:
+  static_data:
