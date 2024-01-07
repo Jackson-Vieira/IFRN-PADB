@@ -18,31 +18,9 @@ CORS(app, origins=["localhost"])
 def connect_db():
     return psycopg2.connect(DATABASE_URL)
 
-def test_db_connection():
-    # run script to test connection with the db 
-    ...
-
-INSERT_ROOM_SQL = """
-  INSERT INTO Rooms (name, description, enable, start_date, end_date)
-  VALUES (%(name)s, %(description)s, %(enable)s, %(start_date)s, %(end_date)s)
-"""
-
-GET_ROOMS_SQL = """
-  SELECT id, name, description, enable, start_date, end_date, created_at, updated_at FROM Rooms
-"""
-
-GET_ROOM_SQL = """
-  SELECT * FROM Rooms WHERE id = %(id)s
-"""
-
-UPDATE_ROOM_SQL = """
-  UPDATE Rooms SET name = %(name)s, description = %(description)s, enable = %(enable)s, start_date = %(start_date)s, end_date = %(end_date)s, updated_at = %(updated_at)s
-  WHERE id = %(id)s
-"""
-
-DELETE_ROOM_SQL = """
-  DELETE FROM Rooms WHERE id = %(id)s
-"""
+# def test_db_connection():
+#     # run script to test connection with the db 
+#     ...
 
 class RoomBase(BaseModel):
   name: str
