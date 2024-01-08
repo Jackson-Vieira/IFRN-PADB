@@ -163,6 +163,19 @@ table.table .avatar {
 	margin-right: 10px;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#roomsTable tbody tr {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
 .pagination {
 	float: right;
 	margin: 0 0 5px;

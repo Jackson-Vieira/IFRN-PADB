@@ -1,7 +1,7 @@
 import flask
 import psycopg2
 
-from flask import request
+from flask import request, jsonify
 from flask_cors import CORS
 from pydantic import BaseModel, ValidationError
 from decouple import config
@@ -54,6 +54,29 @@ def create_room():
 
     except ValidationError as e:
         return e.errors(), 400
+    except Exception as e:
+        print(e)
+
+
+@app.route("/api/v1/rooms", methods=["GET"])
+def get_rooms():
+    try:
+        db_connection = connect_db()
+
+        search = request.args.get("search")
+
+        room_repository = RoomRepository(db_connection)
+        room_uc = RoomUseCases(room_repository)
+
+        if search:
+            rooms = room_uc.search(query=search)
+        else:
+            rooms = room_uc.get_all_rooms()
+
+        db_connection.close()
+
+        return jsonify({"data": rooms}), 200
+
     except Exception as e:
         print(e)
         return "Internal Server Error", 500

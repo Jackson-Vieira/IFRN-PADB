@@ -2,6 +2,7 @@
 from .base import BaseRepository
 import datetime
 
+
 class RoomRepository(BaseRepository):
     INSERT_ROOM_SQL = """
         INSERT INTO Rooms (name, description, enable, start_date, end_date)
@@ -14,7 +15,7 @@ class RoomRepository(BaseRepository):
     """
 
     GET_ROOMS_SQL = """
-        SELECT id, name, description, enable, start_date, end_date, created_at, updated_at FROM Rooms
+        SELECT id, name, description, enable, start_date, end_date FROM Rooms
     """
 
     DELETE_ROOM_SQL = """
@@ -27,7 +28,7 @@ class RoomRepository(BaseRepository):
     """
 
     SEARCH_ROOMS_SQL = """
-        SELECT id, name, description, enable, start_date, end_date, created_at, updated_at FROM Rooms WHERE name LIKE %(pattern)s
+        SELECT id, name, description, enable, start_date, end_date FROM Rooms WHERE name LIKE %(pattern)s
     """
 
     def create_room(self, data):
@@ -47,15 +48,19 @@ class RoomRepository(BaseRepository):
     def delete_room(self, rid: int):
         cursor = self.execute_query(self.DELETE_ROOM_SQL, {"id": rid})
         self.db_connection.commit()
-    
+
     def update(self, rid, data):
-        cursor = self.execute_query(self.UPDATE_ROOM_SQL, {"id": rid, "updated_at": datetime.datetime.now(), **data})
+        cursor = self.execute_query(
+            self.UPDATE_ROOM_SQL,
+            {"id": rid, "updated_at": datetime.datetime.now(), **data},
+        )
         self.db_connection.commit()
 
     def search(self, query):
         cursor = self.execute_query(self.SEARCH_ROOMS_SQL, {"pattern": f"{query}%"})
         return self.fetch_all(cursor)
-    
+
+
 class RoomUseCases:
     def __init__(self, room_repository: RoomRepository):
         self.room_repository = room_repository
