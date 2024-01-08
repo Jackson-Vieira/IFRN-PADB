@@ -149,4 +149,4 @@ if __name__ == "__main__":
             cur.execute(MESSAGE_TABLE)
             conn.commit()
 
-    app.run(debug=True)
+    app.run(debug=False)
