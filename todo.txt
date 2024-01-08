@@ -1,9 +1,16 @@
 TESTS (TDD)
-[ ] - Test Database connection
-[ ] - Test Schemas
-[ ] - Test Usecases
-    - [ ] ADD
-    - [ ] DELETE
-    - [ ] PUT
-    - [ ] GET
-    - [ ] SEARCH
+[x] - Test Database connection
+[x] - Test Schemas
+[x] - Test Usecases
+    - [x] ADD
+    - [x] DELETE
+    - [x] PUT
+    - [x] GET
+    - [x] SEARCH
+
+[ ] - Validations errors (404 if room does not exists)
+[ ] - Improve Tests
+[ ] - Show toasts errors when errors, warning, sucesss
+[ ] - Refact Javascript
+[ ] - Link to MindmeetP2P (OPCIONAL)
+[ ] - Deploy Flask App
