@@ -1,18 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;800&display=swap');
+
 :root {
 	/** CSS DARK THEME PRIMARY COLORS */
-	--color-primary-100: #81f0e1;
+	--color-primary-100: #121a24;
+
 	--color-primary-200: #92f2e4;
 	--color-primary-300: #a2f4e8;
 	--color-primary-400: #b0f6eb;
 	--color-primary-500: #bef7ee;
-	--color-primary-600: #ccf9f2;
+
+	--color-primary-600: #03080D;
+
 	/** CSS DARK THEME SURFACE COLORS */
 	--color-surface-100: #000000;
 	--color-surface-200: #1e1e1e;
 	--color-surface-300: #353535;
 	--color-surface-400: #4e4e4e;
 	--color-surface-500: #696969;
-	--color-surface-600: #858585;
+
+	--color-surface-600: #8D90A0;
 
 	/** CSS DARK THEME MIXED SURFACE COLORS */
 	--color-surface-mixed-100: #141b19;
@@ -23,18 +29,21 @@
 	--color-surface-mixed-600: #8c908f;
 }
 
-
 body {
-	color: var();
-	background-color: var(--color-surface-100);
+	height: 100vh;
+    width: 100%;
+	background: linear-gradient(to bottom, #03080E, #0C1116);
+	font-family: 'Inter', sans-serif;	
 	font-size: 16px;
+	overflow-y: auto;
 }
 
 .table-responsive {
-    margin: 30px 0;
+    padding: 30px 0;
 }
+
 .table-wrapper {
-	background: var(--color-surface-200);
+	background: var(--color-primary-100);
 	padding: 20px 25px;
 	border-radius: 8px;
 	min-width: 1000px;
@@ -42,7 +51,6 @@ body {
 }
 .table-title {        
 	padding-bottom: 15px;
-	background: var(--color-surface-200);
 	color: #fff;
 	padding: 16px 30px;
 	min-width: 100%;
@@ -52,11 +60,16 @@ body {
 .table-title h2 {
 	margin: 5px 0 0;
 	font-size: 24px;
+	font-weight: bold;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
 }
+
 .table-title .btn-group {
 	float: right;
 }
 .table-title .btn {
+	background: var(--color-surface-600);
 	color: #fff;
 	float: right;
 	font-size: 13px;
@@ -83,7 +96,7 @@ table.table tr th, table.table tr td {
 
 table.table tr th {
 	color: #fff;
-	background: var(--color-surface-300)
+	background: #06101a;
 }
 
 table.table tr th:first-child {
@@ -110,6 +123,7 @@ table.table th i {
 	margin: 0 5px;
 	cursor: pointer;
 }	
+
 table.table td:last-child i {
 	opacity: 0.9;
 	font-size: 22px;
@@ -274,7 +288,7 @@ table.table .avatar {
 .modal .modal-content {
 	border-radius: 4px;
 	font-size: 14px;
-	background: var(--color-surface-200);
+	background: var(--color-primary-100);
 	color: #fff;
 }
 .modal .modal-footer {
@@ -297,7 +311,6 @@ table.table .avatar {
 	background: var(--color-surface-500);
 }
 
-
 .modal .modal-title {
 	display: inline-block;
 }
@@ -313,6 +326,7 @@ table.table .avatar {
 	border-radius: 2px;
 	min-width: 100px;
 }	
+
 .modal form label {
 	font-weight: normal;
 }	
@@ -357,4 +371,14 @@ table.table .avatar {
 	height: 50px;
 	width: 110px;
 	background: blue;
+}
+
+.create {
+	background-color: var(--color-surface-600);
+	border: none;
+}
+
+.create:hover {
+	background-color: var(--color-surface-600);
+	opacity: 80%;
 }
