@@ -125,3 +125,11 @@ deleteRoomForm.addEventListener("submit", async function (event) {
 
   const response = await deleteData(url);
 });
+
+function handleClickEditRoom(event) {
+  console.log(event);
+}
+
+function handleClickDeleteRoom(event) {
+  console.log(event);
+}
