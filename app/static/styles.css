@@ -162,12 +162,12 @@ table.table td i {
 }
 
 table.table td.active {
-	/* TODO CHANGE THIS */
+	text-transform: capitalize;
 	color: green;
 }
 
 table.table td.disabled{
-	/* TODO CHANGE THIS FOR RED */
+	text-transform: capitalize;
 	color: red;
 }
 

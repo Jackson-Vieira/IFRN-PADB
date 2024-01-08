@@ -38,12 +38,14 @@ function addRoomRowToTable(roomData) {
   const row = document.createElement("tr");
 
   const rowData = `
-        ${roomData
-          .map(
-            (data) =>
-              `<td${data === true ? ' class="active"' : ""}>${data}</td>`
-          )
-          .join("")}
+        <td>${roomData[0]}</td>
+        <td>${roomData[1]}</td>
+        <td>${roomData[2]}</td>
+        <td class=${roomData[3] == true ? "active" : "disabled"}>
+          ${roomData[3]}
+        </td>
+        <td>${roomData[4]}</td>
+        <td>${roomData[5]}</td>
         <td>
             <a data-bs-target="#editRoomModal" class="edit" data-bs-toggle="modal" onclick="handleClickEditRoom(event)">
 							<svg class="w-[24px] h-[24px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
