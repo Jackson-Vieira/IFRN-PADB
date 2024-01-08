@@ -1,6 +1,7 @@
 const API_V1_URL = "http://localhost:5000/api/v1";
 
 const selectAll = document.querySelector("#selectAll");
+const searchInput = document.querySelector("#search");
 const addRoomForm = document.forms["addRoomForm"];
 const editRoomForm = document.forms["editRoomForm"];
 const deleteRoomForm = document.forms["deleteRoomForm"];
@@ -126,10 +127,17 @@ deleteRoomForm.addEventListener("submit", async function (event) {
   const response = await deleteData(url);
 });
 
+function handleSearchFilterRoom(event) {
+  let input = searchInput.value;
+  // TODO: make request and update rooms table
+}
+
 function handleClickEditRoom(event) {
   console.log(event);
+  // TODO: handle this
 }
 
 function handleClickDeleteRoom(event) {
   console.log(event);
+  // TODO: handle this
 }
