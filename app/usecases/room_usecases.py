@@ -9,13 +9,20 @@ class RoomRepository(BaseRepository):
         VALUES (%(name)s, %(description)s, %(enable)s, %(start_date)s, %(end_date)s)
         RETURNING id
     """
+
     GET_ROOM_SQL = """
-        SELECT id, name, description, enable, start_date, end_date, created_at, updated_at
-        FROM Rooms WHERE id = %(id)s
+        SELECT id, name, description, enable, start_date, end_date, created_at, updated_at FROM Rooms WHERE id = %(id)s
     """
 
     GET_ROOMS_SQL = """
-        SELECT id, name, description, enable, start_date, end_date FROM Rooms
+        SELECT 
+            id, 
+            name, 
+            description, 
+            enable, 
+            TO_CHAR(start_date, 'YYYY-MM-DD HH24:MI:SS') AS start_date, 
+            TO_CHAR(end_date, 'YYYY-MM-DD HH24:MI:SS') AS end_date 
+        FROM Rooms
     """
 
     DELETE_ROOM_SQL = """
@@ -28,7 +35,15 @@ class RoomRepository(BaseRepository):
     """
 
     SEARCH_ROOMS_SQL = """
-        SELECT id, name, description, enable, start_date, end_date FROM Rooms WHERE name LIKE %(pattern)s
+        SELECT 
+            id, 
+            name, 
+            description, 
+            enable, 
+            TO_CHAR(start_date, 'YYYY-MM-DD HH24:MI:SS') AS start_data, 
+            TO_CHAR(end_date, 'YYYY-MM-DD HH24:MI:SS') AS end_date 
+        FROM Rooms 
+        WHERE name LIKE %(pattern)s
     """
 
     def create_room(self, data):
